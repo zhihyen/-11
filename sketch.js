@@ -36,7 +36,16 @@ function modelReady() {
 
 function draw() {
   background(220);
-  image(video, 0, 0, width, height);
+
+  // 檢查 video 是否 ready
+  if (video && video.loadedmetadata) {
+    image(video, 0, 0, width, height);
+  } else {
+    fill(0);
+    textSize(32);
+    textAlign(CENTER, CENTER);
+    text("攝影機尚未啟動", width / 2, height / 2);
+  }
 
   // 顯示分數
   fill(255, 0, 0);
